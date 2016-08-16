@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"tsc -w\" \"node ./bin/www\" ",
-    "test": "mocha",
+    "test": "mocha --watch",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings install",
