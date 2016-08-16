@@ -14,15 +14,27 @@ var app = require('../app');
 
 
 describe('GET /albums', function () {
-    
+
     it('Response status OK', function (done) {
         request(app)
             .get('/albums')
             .expect(200)
-            .end(function(error) {
-                if(error) throw error;
+            .end(function (error) {
+                if (error) throw error;
                 done();
             });
     });
-    
+
+
+    it('Returns JSON data', function (done) {
+        request(app)
+            .get('/albums')
+            .expect('Content-Type', /json/)
+            .end(function (error) {
+                if (error) throw error;
+                done();
+            });
+    });
+
+
 });
