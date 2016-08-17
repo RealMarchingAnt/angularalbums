@@ -24,7 +24,7 @@ router.use(bodyParser.json());
  * Returns all albums
  */
 router.get('/', function(req, res, next) {
-  res.json(mockalbums[0]);
+  res.json(mockalbums);
 });
 
 /**

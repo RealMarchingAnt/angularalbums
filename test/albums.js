@@ -1,8 +1,12 @@
-var assert = require('assert');
+// var assert = require('assert');
+var expect = require('chai').expect;
 var request = require('supertest');
 var app = require('../app');
 
-describe('GET /albums', function () {
+/**
+ * Test getting all albums
+ */
+describe('Get all the albums', function () {
 
     it('Response status OK', function (done) {
         request(app)
@@ -14,7 +18,6 @@ describe('GET /albums', function () {
             });
     });
 
-
     it('Returns JSON data', function (done) {
         request(app)
             .get('/albums')
@@ -23,12 +26,27 @@ describe('GET /albums', function () {
                 if (error) throw error;
                 done();
             });
+    });    
+
+    it('Returns a list of JSON Objects', function (done) {
+        request(app)
+            .get('/albums')
+            .expect(200)
+            .end(function (error, res) {
+                if (error) throw error;
+                expect(res.body).to.have.length(2);
+                done();
+            });
     });
+    
 
 
 });
 
-describe('GET /albums/123', function () {
+/**
+ * Test getting ONE album
+ */
+describe('Get one album', function () {
 
     it('Returns status OK', function (done) {
         request(app)
